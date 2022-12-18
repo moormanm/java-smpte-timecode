@@ -8,8 +8,6 @@ public class TimecodeRecord {
     int hours;
     int minutes;
     int seconds;
-
     int frames;
-
     FrameRate frameRate;
 }
