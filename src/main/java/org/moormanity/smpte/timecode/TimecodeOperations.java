@@ -44,26 +44,24 @@ public class TimecodeOperations {
     }
 
     public static TimecodeRecord fromElapsedFrames(int frameNumber, @NonNull FrameRate frameRate) {
-        if(frameNumber < 0) {
+        if (frameNumber < 0) {
             throw new IllegalArgumentException("frameNumber must be positive: " + frameNumber);
         }
         int inElapsedFrames;
         // adjust for dropFrame
-        if (frameRate.isDropFrameMode()) {
-            // modify input elapsed frame count in the case of a drop rate
-            int framesPer10Minutes = frameRate.getNumberOfElapsedFramesThatCompriseOneSecond() * 600;
-            int d = frameNumber / framesPer10Minutes;
-            int m = frameNumber % framesPer10Minutes;
-            // don't allow negative numbers
-            int f = Math.max(0, m - frameRate.getNumberOfFramesToDropInOneMinute());
 
-            int part1 = 9 * frameRate.getNumberOfFramesToDropInOneMinute() * d;
-            int part2 = frameRate.getNumberOfFramesToDropInOneMinute() *
-                    (f / ((framesPer10Minutes - frameRate.getNumberOfFramesToDropInOneMinute()) / 10));
-            inElapsedFrames = frameNumber + part1 + part2;
-        } else {
-            inElapsedFrames = frameNumber;
-        }
+        // modify input elapsed frame count in the case of a drop rate
+        int framesPer10Minutes = frameRate.getNumberOfElapsedFramesThatCompriseOneSecond() * 600;
+        int d = frameNumber / framesPer10Minutes;
+        int m = frameNumber % framesPer10Minutes;
+        // don't allow negative numbers
+        int f = Math.max(0, m - frameRate.getNumberOfFramesToDropInOneMinute());
+
+        int part1 = 9 * frameRate.getNumberOfFramesToDropInOneMinute() * d;
+        int part2 = frameRate.getNumberOfFramesToDropInOneMinute() *
+                (f / ((framesPer10Minutes - frameRate.getNumberOfFramesToDropInOneMinute()) / 10));
+        inElapsedFrames = frameNumber + part1 + part2;
+
 
         int logicalFps = frameRate.getNumberOfElapsedFramesThatCompriseOneSecond();
         int frames = inElapsedFrames % logicalFps;
@@ -85,14 +83,14 @@ public class TimecodeOperations {
     }
 
     public static TimecodeRecord add(@NonNull TimecodeRecord a, @NonNull TimecodeRecord b) {
-       if(a.getFrameRate() != b.getFrameRate()) {
-           throw new IllegalArgumentException("frame rates must match");
-       }
-       return fromElapsedFrames(toElapsedFrameCount(a) + toElapsedFrameCount(b), a.getFrameRate());
+        if (a.getFrameRate() != b.getFrameRate()) {
+            throw new IllegalArgumentException("frame rates must match");
+        }
+        return fromElapsedFrames(toElapsedFrameCount(a) + toElapsedFrameCount(b), a.getFrameRate());
     }
 
     public static TimecodeRecord subtract(@NonNull TimecodeRecord a, @NonNull TimecodeRecord b) {
-        if(a.getFrameRate() != b.getFrameRate()) {
+        if (a.getFrameRate() != b.getFrameRate()) {
             throw new IllegalArgumentException("frame rates must match");
         }
         return fromElapsedFrames(toElapsedFrameCount(a) - toElapsedFrameCount(b), a.getFrameRate());
