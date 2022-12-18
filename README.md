@@ -45,8 +45,6 @@ String timecodeString = TimecodeOperations.toTimecodeString(a);
 
 ## Supported Timecode Frame Rates
 
-The following BITC frame rates are supported. These are used widely in DAWs (digital audio workstation software) and video editing applications.
-
 | Film / ATSC / HD | PAL / SECAM / DVB / ATSC | NTSC / ATSC / PAL-M | NTSC Non-Standard | ATSC |
 | ---------------- | ------------------------ | ------------------- | ----------------- | ---- |
 | 23.976           | 25                       | 29.97               | 30 DF             | 30   |
