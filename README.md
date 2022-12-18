@@ -6,7 +6,7 @@ A minimalist java library for dealing with SMPTE timecodes. Supports all major b
 
 # Usage:
 
-Create an immutable TimecodeRecord from a string and framerate:
+Create an immutable [TimecodeRecord](https://github.com/moormanm/java-smpte-timecode/blob/master/src/main/java/org/moormanity/smpte/timecode/TimecodeRecord.java) from a string and framerate:
 
 ```
 TimecodeRecord timecode = TimecodeOperations.fromTimecodeString("01:00:00;99", FrameRate._29_97_drop));
@@ -21,25 +21,25 @@ TimecodeOperations.fromElapsedFrames(10044,  FrameRate._25);
 
 Subtract or add timecodes to create new ones:
 ```
-        TimecodeRecord a =  TimecodeOperations.fromTimecodeString("23:30:00;00", FrameRate._29_97_drop);
-        TimecodeRecord b =  TimecodeOperations.fromTimecodeString("01:00:00;00", FrameRate._29_97_drop);
-        TimecodeRecord aMinusB = TimecodeOperations.subtract(a,b);
+TimecodeRecord a =  TimecodeOperations.fromTimecodeString("23:30:00;00", FrameRate._29_97_drop);
+TimecodeRecord b =  TimecodeOperations.fromTimecodeString("01:00:00;00", FrameRate._29_97_drop);
+TimecodeRecord aMinusB = TimecodeOperations.subtract(a,b);
         
-        TimecodeRecord a =  TimecodeOperations.fromTimecodeString("23:30:00;00", FrameRate._29_97_drop);
-        TimecodeRecord b =  TimecodeOperations.fromTimecodeString("01:00:00;00", FrameRate._29_97_drop);
-        TimecodeRecord aPlusB = TimecodeOperations.add(a,b);
+TimecodeRecord a =  TimecodeOperations.fromTimecodeString("23:30:00;00", FrameRate._29_97_drop);
+TimecodeRecord b =  TimecodeOperations.fromTimecodeString("01:00:00;00", FrameRate._29_97_drop);
+TimecodeRecord aPlusB = TimecodeOperations.add(a,b);
 ```
 
 Get the total elapsed frames of a TimecodeRecord:
 ```
-  TimecodeRecord a =  TimecodeOperations.fromTimecodeString("23:30:00;00", FrameRate._29_97_drop);
-  int totalElapsedFrames = TimecodeOperations.toElapsedFrameCount(a);
+TimecodeRecord a =  TimecodeOperations.fromTimecodeString("23:30:00;00", FrameRate._29_97_drop);
+int totalElapsedFrames = TimecodeOperations.toElapsedFrameCount(a);
 ```
 
 Format a TimecodeRecord as a string:
 ```
-  TimecodeRecord a =  TimecodeOperations.fromTimecodeString("23:30:00;00", FrameRate._29_97_drop);
-  String timecodeString = TimecodeOperations.toTimecodeString(a);
+TimecodeRecord a =  TimecodeOperations.fromTimecodeString("23:30:00;00", FrameRate._29_97_drop);
+String timecodeString = TimecodeOperations.toTimecodeString(a);
 ```
 
 
