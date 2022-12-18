@@ -27,8 +27,8 @@ test {
     useJUnitPlatform()
 }
 
-tasks.jacocoTestReport {
+jacocoTestReport {
     reports {
-        csv.isEnabled = true
+        csv.enabled true
     }
 }
