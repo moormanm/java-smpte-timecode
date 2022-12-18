@@ -12,6 +12,8 @@ Create an immutable TimecodeRecord from a string and framerate:
 TimecodeRecord timecode = TimecodeOperations.fromTimecodeString("01:00:00;99", FrameRate._29_97_drop));
 ```
 
+All supported framerates are in the [FrameRate.java](https://github.com/moormanm/java-smpte-timecode/blob/master/src/main/java/org/moormanity/smpte/timecode/FrameRate.java) enum.
+
 Create an immutable TimecodeRecord from an elapsed frame count and framerate:
 ```
 TimecodeOperations.fromElapsedFrames(10044,  FrameRate._25);
