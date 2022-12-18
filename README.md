@@ -1,5 +1,6 @@
 # java-smpte-timecode
 A minimalist java library for dealing with SMPTE timecodes. Supports all major broadcast timecodes. 
+
 ![Coverage](.github/badges/jacoco.svg)
 
 
