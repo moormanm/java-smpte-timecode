@@ -3,8 +3,17 @@ A minimalist java library for dealing with SMPTE timecodes. Supports all major b
 
 ![Coverage](.github/badges/jacoco.svg)
 
+# Installation
+Get from Maven Central:
+```
+<dependency>
+    <groupId>org.moormanity</groupId>
+    <artifactId>java-smpte-timecode</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
 
-# Usage:
+# Usage
 
 Create an immutable [TimecodeRecord](https://github.com/moormanm/java-smpte-timecode/blob/master/src/main/java/org/moormanity/smpte/timecode/TimecodeRecord.java) from a string and framerate:
 
