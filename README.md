@@ -33,7 +33,9 @@ Subtract or add timecodes to create new ones:
 TimecodeRecord a =  TimecodeOperations.fromTimecodeString("23:30:00;00", FrameRate._29_97_drop);
 TimecodeRecord b =  TimecodeOperations.fromTimecodeString("01:00:00;00", FrameRate._29_97_drop);
 TimecodeRecord aMinusB = TimecodeOperations.subtract(a,b);
-        
+```
+
+```        
 TimecodeRecord a =  TimecodeOperations.fromTimecodeString("23:30:00;00", FrameRate._29_97_drop);
 TimecodeRecord b =  TimecodeOperations.fromTimecodeString("01:00:00;00", FrameRate._29_97_drop);
 TimecodeRecord aPlusB = TimecodeOperations.add(a,b);
