@@ -1,7 +1,9 @@
 plugins {
-    id 'java'
+    id 'java-library'
     id 'jacoco'
     id 'maven-publish'
+    id 'io.github.gradle-nexus.publish-plugin' version '1.1.0'
+    id 'signing'
 }
 
 group 'org.moormanity'
@@ -22,6 +24,8 @@ dependencies {
 java {
     sourceCompatibility = "1.8"
     targetCompatibility = "1.8"
+    withJavadocJar()
+    withSourcesJar()
 }
 
 test {
@@ -36,14 +40,17 @@ jacocoTestReport {
 
 
 publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
+nexusPublishing {
     repositories {
-        maven {
-            name = "OSSRH"
-            url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-            credentials {
-                username = System.getenv("MAVEN_USERNAME")
-                password = System.getenv("MAVEN_PASSWORD")
-            }
+        sonatype {  //only for users registered in Sonatype after 24 Feb 2021
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
         }
     }
 }
