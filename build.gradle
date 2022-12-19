@@ -2,12 +2,12 @@ plugins {
     id 'java-library'
     id 'jacoco'
     id 'maven-publish'
-    id 'io.github.gradle-nexus.publish-plugin' version '1.1.0'
+    id('io.github.gradle-nexus.publish-plugin') version ('1.1.0')
     id 'signing'
 }
 
 group 'org.moormanity'
-version '0.1'
+version '0.1-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -43,6 +43,28 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from(components.java)
+            pom {
+                name = 'java-smpte-timecode'
+                description = 'A minimalist library for dealing with SMPTE timecodes'
+                url = 'https://github.com/moormanm/java-smpte-timecode'
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'michael.e.moorman@gmail.com'
+                        name = 'Mike Moorman'
+                    }
+                }
+                scm {
+                    url = 'https://github.com/moormanm/java-smpte-timecode.git'
+                    connection = 'scm:git://github.com/moormanm/java-smpte-timecode.git'
+                    developerConnection = 'scm:git://github.com/moormanm/java-smpte-timecode.git'
+                }
+            }
         }
     }
 }
@@ -53,4 +75,8 @@ nexusPublishing {
             snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
         }
     }
+}
+
+signing {
+    sign publishing.publications.mavenJava
 }
