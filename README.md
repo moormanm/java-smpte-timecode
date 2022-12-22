@@ -1,6 +1,10 @@
 # java-smpte-timecode
 A minimalist java library for dealing with SMPTE timecodes. Supports all major broadcast timecodes. 
 
+Timecode to frames conversions are tested exhaustively against these other implementations:
+- https://pypi.org/project/timecode/
+
+
 ![Coverage](.github/badges/jacoco.svg)
 
 # Installation
