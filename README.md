@@ -22,7 +22,7 @@ Get from Maven Central:
 Create an immutable [TimecodeRecord](https://github.com/moormanm/java-smpte-timecode/blob/master/src/main/java/org/moormanity/smpte/timecode/TimecodeRecord.java) from a string and framerate:
 
 ```
-TimecodeRecord timecode = TimecodeOperations.fromTimecodeString("01:00:00;99", FrameRate._29_97_drop));
+TimecodeRecord timecode = TimecodeOperations.fromTimecodeString("01:00:00;22", FrameRate._29_97_drop));
 ```
 
 All supported framerates are in the [FrameRate.java](https://github.com/moormanm/java-smpte-timecode/blob/master/src/main/java/org/moormanity/smpte/timecode/FrameRate.java) enum.
